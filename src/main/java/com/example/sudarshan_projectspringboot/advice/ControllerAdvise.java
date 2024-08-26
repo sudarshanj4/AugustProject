@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ControllerAdvise {
 
     @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<String> getProductNotFound(ProductNotFoundException e){
-     return new ResponseEntity<>(e.getMessage(), HttpStatusCode.valueOf(400));
+    public ResponseEntity<String> getProductNotFound(ProductNotFoundException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatusCode.valueOf(400));
 
 
-
-
+    }
+}
