@@ -1,0 +1,21 @@
+package com.example.sudarshan_projectspringboot.advice;
+
+import com.example.sudarshan_projectspringboot.exception.ProductNotFound;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+
+@ControllerAdvice
+public class ControllerAdvice   {
+
+    @ExceptionHandler(ProductNotFound.class)
+    public ResponseEntity<String> getProductNotFound(ProductNotFound e){
+     return new ResponseEntity<>(e.getMessage(), HttpStatusCode.valueOf(400));
+    }
+
+}
+
+
+
