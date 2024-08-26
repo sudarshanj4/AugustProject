@@ -1,7 +1,7 @@
 package com.example.sudarshan_projectspringboot.exception;
 
-public class ProductNotFound extends Exception {
-    public ProductNotFound(String message) {
+public class ProductNotFoundException extends Exception {
+    public ProductNotFoundException(String message) {
         super(message);
     }
 }
