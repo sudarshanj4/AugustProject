@@ -49,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
     public Page<Product> getAllProduct(int pageSize, int pageNum) {
         pageSize=Math.min(pageSize,100);
         return productRepository.findAll(PageRequest.of(pageNum,pageSize, Sort.by("name").descending()
-                .and(Sort.by(",category"))));
+                .and(Sort.by("category"))));
 
     }
 }
