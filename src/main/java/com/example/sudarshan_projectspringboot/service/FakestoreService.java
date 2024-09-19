@@ -6,24 +6,30 @@ import com.example.sudarshan_projectspringboot.models.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-@Service
+@Service("fakeStore")
 public class FakestoreService implements ProductService{
     @Override
     public Product getByProductId(long id) throws ProductNotFoundException {
 
-        String url="https://fakestoreapi.com/products/" + id;
+        String url="http://fakestoreapi.com/products/" + id;
         RestTemplate restTemplate = new RestTemplate();
         FakestoreDTO fakestoreDTO = restTemplate.getForObject(url, FakestoreDTO.class);
         if(fakestoreDTO==null){
-            throw new ProductNotFoundException("Product not found with id ");
+            throw new ProductNotFoundException("Product not found with id "+id);
         }
 
         return convertproduct(fakestoreDTO);
     }
+
+    @Override
+    public Product createProduct(String name, String category, String Description) {
+        return null;
+    }
+
     private Product convertproduct(FakestoreDTO dto){
         Product product = new Product();
-        product.setProduct_description(dto.getDescription());
-        product.setProduct_name(dto.getTitle());
+        product.setDescription(dto.getDescription());
+
         product.setCategory(dto.getCategory());
         return product;
 
