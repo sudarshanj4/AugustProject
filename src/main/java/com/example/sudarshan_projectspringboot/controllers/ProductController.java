@@ -18,12 +18,12 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
    @Autowired
-   @Qualifier("dbImpl")
+   @Qualifier("fakeStore")
    private ProductService productService;
 
    @GetMapping("/{id}")
-   public ResponseEntity<Product> getProductById(@PathVariable("id") long productid) throws ProductNotFoundException {
-       Product product = productService.getByProductId(productid);
+   public ResponseEntity<Product> getProductById(@PathVariable("id") long productId) throws ProductNotFoundException {
+       Product product = productService.getByProductId(productId);
         return new ResponseEntity<>(product, HttpStatusCode.valueOf(200));
    }
 @PostMapping()

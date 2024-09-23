@@ -6,10 +6,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-@Data
+import java.io.Serializable;
+
+
 
 @Entity
-public class Product {
+@Data
+public class Product implements Serializable {
 //    private int product_id;
 
     @Id
