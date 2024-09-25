@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class CreateProductRequestDTO {
     String name;
-    String Category;
+    String category;
     String description;
 }
