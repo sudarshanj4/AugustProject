@@ -32,7 +32,13 @@ public class ProductController {
 
        return productService.createProduct(createProductRequestDTO.getName(),createProductRequestDTO.getCategory(),createProductRequestDTO.getDescription());
 }
-
+   
+@PutMapping("/{id}")
+    public Product updateById(@PathVariable("id") long id, @RequestBody CreateProductRequestDto requestDto) throws ProductNotFoundException{
+        return productService.updateById(id,requestDto.getName(),
+                requestDto.getCategory(), requestDto.getDescription());
+    }
+   
 @GetMapping()
     public ResponseEntity<Page<Product>> getAllProduct(
             @RequestParam(value = "pageSize",defaultValue = "20") int pageSize,
