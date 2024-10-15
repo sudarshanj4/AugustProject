@@ -20,7 +20,7 @@ public class FakestoreService implements ProductService{
     RedisTemplate<String,Object> redisTemplate;
 
     @Override
-    public Product getByProductId(long id) throws ProductNotFoundException {
+    public Product getByProductById(long id) throws ProductNotFoundException {
 
         Product product = (Product) this.redisTemplate.opsForHash().get("PRODUCTS","product_"+id);
         if(product != null){

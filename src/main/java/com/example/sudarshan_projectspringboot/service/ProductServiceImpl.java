@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
     ProductRepository productRepository;
 
     @Override
-    public Product getByProductId(long id) throws ProductNotFoundException {
+    public Product getByProductById(long id) throws ProductNotFoundException {
         ProductInfo productInfo=productRepository.getProductInfo(id);
         Optional<Product> productOptional=productRepository.findById(id);
         if(productOptional.isPresent()){
