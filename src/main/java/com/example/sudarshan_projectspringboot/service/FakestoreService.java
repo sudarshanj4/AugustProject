@@ -1,5 +1,6 @@
 package com.example.sudarshan_projectspringboot.service;
 
+import com.example.sudarshan_projectspringboot.UnsafeClient;
 import com.example.sudarshan_projectspringboot.configuration.RedisConfig;
 import com.example.sudarshan_projectspringboot.dto.FakestoreDTO;
 import com.example.sudarshan_projectspringboot.exception.ProductNotFoundException;
@@ -13,8 +14,8 @@ import org.springframework.web.client.RestTemplate;
 @Service("fakeStore")
 public class FakestoreService implements ProductService{
 
-    @Autowired
-    RestTemplate restTemplate;
+//    @Autowired
+//    RestTemplate restTemplate;
 
     @Autowired
     RedisTemplate<String,Object> redisTemplate;
@@ -26,9 +27,12 @@ public class FakestoreService implements ProductService{
         if(product != null){
             return product;
         }
-        String url="http://fakestoreapi.com/products/" + id;
+        String url="https://fakestoreapi.com/products/" + id;
 
-        FakestoreDTO fakestoreDTO = this.restTemplate.getForObject(url, FakestoreDTO.class);
+        UnsafeClient.ignoreCertificates();
+        RestTemplate restTemplate = new RestTemplate();
+
+        FakestoreDTO fakestoreDTO = restTemplate.getForObject(url, FakestoreDTO.class);
         if(fakestoreDTO==null){
             throw new ProductNotFoundException("Product not found with id "+id);
         }

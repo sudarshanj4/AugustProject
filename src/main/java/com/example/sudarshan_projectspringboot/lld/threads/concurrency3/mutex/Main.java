@@ -1,4 +1,4 @@
-package com.example.sudarshan_projectspringboot.lld.threads.concurrency3;
+package com.example.sudarshan_projectspringboot.lld.threads.concurrency3.mutex;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
